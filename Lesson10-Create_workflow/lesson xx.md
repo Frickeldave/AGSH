@@ -1,0 +1,4 @@
+- Create the secret AGSH_ANSIBLE_VAULT with value "VaultMeister" in github
+- Copy cicd.yaml to .github/workflows
+- Customize the source repo-organisation in cicd.yaml on line 23
+- Commit and Push changes
