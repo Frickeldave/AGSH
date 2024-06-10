@@ -1,4 +1,4 @@
-# Lession 01 - Virtuelle Maschine erstellen
+# Lesson 01 - Virtuelle Maschine erstellen
 
 Der Workshop setzt eine vorinstallierte VM auf Basis von Hyper-V voraus. Alle Voraussetzungen die zu treffen sind, sind in diesem Kapitel beschrieben.
 

@@ -1,5 +1,4 @@
-
-# Lession 04 - Installation des GitHub runners
+# Lesson 04 - Installation des GitHub runners
 
 In diesem Kapitel erfährst du, wie du den GitHub runner auf deinem System installierst. Der GitHub Runner ist einen Ausführungskomponenten von GitHub, die sogenannte "Workflows" starten kann, die du in Form von YAML Dateien in deinem Repository ablegst (mehr dazu später).
 Bei GitHub sind 2 Arten von Runnern verfügbar: Der Cloud-Native Runner für den GitHub Ausführungsinstanzen zur Verfügung stellt und "self-hosted-runner" die du selber, je nach Anwendungsgebiet, auf Windows-, Linux oder MAC Systeme installieren kannst.
@@ -66,3 +65,7 @@ Hiermit wird der runner als daemon installiert und startet automatisch, wenn du 
 Im letzten Schritt gehe auf deine GitHub-Runner Konfigurationsseite und prüfe, ob der GitHub Runner mit dem GitHub Backend kommuniziert.
 
 ![Check github runner](./Screenshot%202024-06-10%20080659.png)
+
+- [Zurück zur Startseite](./../README.md)
+- [Voriges Kapitel](./../Lesson03-Create_GH_Repo/Lesson03.md)
+- [Nächstes Kapitel](./../Lesson05-Create_cicd_workflow/lesson05.md)

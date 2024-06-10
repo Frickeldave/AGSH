@@ -1,0 +1,104 @@
+name: cicd
+on: [push]
+
+env:
+  GITHUB_WORKFLOW_DESCRIPTION: A workflow to setup the master node of the AGSH environment
+
+jobs:
+  cicd:
+    runs-on: self-hosted
+    steps:
+
+      - name: Create random value for checkout directory
+        run: |
+          _GITHUB_WORKFLOW_WORKDIR=./checkout/$(echo $RANDOM | md5sum | head -c 5; echo;); \
+          echo GITHUB_WORKFLOW_WORKDIR=$_GITHUB_WORKFLOW_WORKDIR >> $GITHUB_ENV
+
+      - name: Create checkout directory
+        run: mkdir -p ${{ env.GITHUB_WORKFLOW_WORKDIR }}
+
+      - name: Checkout base repository
+        uses: actions/checkout@v4
+        with:
+          repository: Frickeldave/AGSH-EXAMPLE
+          path: ${{ env.GITHUB_WORKFLOW_WORKDIR }}/AGSH
+
+      ################################################################################################
+      ## Update the system and install ansible
+      ################################################################################################
+      - name: Update system
+        run: sudo apt update -y
+
+      - name: Upgrade system
+        run: sudo apt upgrade -y
+
+      - name: Install prerequisites
+        run: sudo apt install -y curl sudo git rsync python3 python3-pip python3-apt python3-venv
+
+      - name: This will create a self contained Ansible Python Virtual environment in the current working directory
+        run: sudo python3 -m venv ~/ansible
+
+      - name: Give full permissions to the github user for the virtual environment
+        run: sudo chown github:github -R ~/ansible
+
+      - name: Activate the python virtual environment
+        run: | 
+          source ~/ansible/bin/activate
+          cd ~/ansible
+          python3 -m pip install --upgrade pip
+          python3 -m pip install ansible-core==2.17.0
+          python3 -m pip install ansible-lint==24.6.0
+
+      ################################################################################################
+      ## Update ansible files
+      ################################################################################################
+      - name: Create ansible directory
+        run: mkdir -p /home/github/ansible/ansible
+
+      - name: Create ansible logs directory
+        run: mkdir -p /home/github/ansible/ansible/logs
+
+      - name: Copy ansible configuration file
+        run: if [ -f ${{ env.GITHUB_WORKFLOW_WORKDIR }}/AGSH/ansible/ansible.cfg ]; then cp ${{ env.GITHUB_WORKFLOW_WORKDIR }}/AGSH/ansible/ansible.cfg /home/github/ansible/ansible/ansible.cfg; fi
+
+      - name: Copy ansible hosts directory
+        run: if [ -d ${{ env.GITHUB_WORKFLOW_WORKDIR }}/AGSH/ansible/hosts ]; then rsync -va ${{ env.GITHUB_WORKFLOW_WORKDIR }}/AGSH/ansible/hosts /home/github/ansible/ansible; fi
+
+      - name: Copy ansible playbooks directory
+        run:  if [ -d ${{ env.GITHUB_WORKFLOW_WORKDIR }}/AGSH/ansible/playbooks ]; then rsync -va ${{ env.GITHUB_WORKFLOW_WORKDIR }}/AGSH/ansible/playbooks /home/github/ansible/ansible; fi
+
+      - name: Copy ansible library directory
+        run: if [ -d ${{ env.GITHUB_WORKFLOW_WORKDIR }}/AGSH/ansible/library ]; then rsync -va ${{ env.GITHUB_WORKFLOW_WORKDIR }}/AGSH/ansible/library /home/github/ansible/ansible; fi
+
+      - name: Create the logfile directory
+        run: if [ ! -d /home/github/ansible/ansible/logs ]; then mkdir /home/github/ansible/ansible/logs; fi
+
+      - name: Write ansible vault secret to disk
+        run: sudo bash -c "echo ${{ secrets.AGSH_ANSIBLE_VAULT }} > /home/github/ansible/ansible/av.secret"
+
+      - name: Change ownership of vault secret file
+        run: sudo chown github:github "/home/github/ansible/ansible/av.secret"
+
+      - name: Secure ansible vault secret file
+        run: sudo chmod 600 "/home/github/ansible/ansible/av.secret"
+
+      - name: Create ssh directory
+        run: mkdir -p "/home/github/ansible/ansible/.ssh"
+
+      - name: Create ssh directory
+        run: touch "/home/github/ansible/ansible/.ssh/authorized_keys"
+
+      - name: Change ownership of the SSH directory
+        run: sudo chown -R github:github "/home/github/ansible/ansible/.ssh"
+
+      - name: Secure the SSH directory
+        run: sudo chmod 700 "/home/github/ansible/ansible/.ssh"
+
+      - name: Write ansible ssh key to disk
+        run: sudo bash -c "echo \"${{ secrets.AGSH_ANSIBLE_PRVKEY }}\" > /home/github/ansible/ansible/.ssh/ansible_ssh.key"
+
+      - name: Change ownership of ansible private key file
+        run: sudo chown github:github "/home/github/ansible/ansible/.ssh/ansible_ssh.key"
+
+      - name: Secure ansible private key file
+        run: sudo chmod 600 "/home/github/ansible/ansible/.ssh/ansible_ssh.key"

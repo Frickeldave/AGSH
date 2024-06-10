@@ -1,6 +1,6 @@
-# Lession 03 - GitHub repository erstellen
+# Lesson 03 - GitHub repository erstellen
 
-Alle Dateien die für die Verwaltung der Umgebung notwendig sind, werden in einem privaten Repository verwaltet. Privat deswegen, weil in dem Repository 2 wesentlichen Secrets verwaltet werden (mehr dazu in späteren Lessions). In diesem Kapitel wird erläutert, wie das repository angelegt und auf das Entiwcklungssystem gecloned wird.
+Alle Dateien die für die Verwaltung der Umgebung notwendig sind, werden in einem privaten Repository verwaltet. Privat deswegen, weil in dem Repository 2 wesentlichen Secrets verwaltet werden (mehr dazu in späteren Lessons). In diesem Kapitel wird erläutert, wie das repository angelegt und auf das Entiwcklungssystem gecloned wird.
 
 ## Anlegen des Repositories
 

@@ -1,4 +1,4 @@
-# Lession 02 - Virtuelle Maschine erstellen
+# Lesson 02 - Virtuelle Maschine erstellen
 
 Nach der Erstellung der virtuellen Maschine muss auf dieser noch Betriebssystem installiert werden. Die Installation erfolgt im Grundsatz den Standardeinstellungen von Ubunutu 24.04.
 
@@ -79,7 +79,7 @@ Bestätige einmal den Fingerprint mit ```yes``` und authentifiziere dich mit dei
 ![Logon via SSH](./Screenshot%202024-06-07%20132558.png)
 
 **Hinweis:** Die IP Adresse der Hyper-V Instanz wechselt nach jedem Neustart. Daher ist einmal nach einem Neustart die Anmeldung auf dem Ubuntu System notwendig umd ie IP Adresse mit ```ip addr show``` zu ermitteln.
-Alternativ kannst du die IP Adresse mit folgenden Befehl auslesen, wenn du die Integration Tools aktiviert hast (Aktivierung in Lession 01 und Installation der Azure-Tools in Lession 02).
+Alternativ kannst du die IP Adresse mit folgenden Befehl auslesen, wenn du die Integration Tools aktiviert hast (Aktivierung in Lesson 01 und Installation der Azure-Tools in Lesson 02).
 ```get-vm | select -ExpandProperty networkadapters | select vmname, macaddress, switchname, ipaddresses```
 
 - [Zurück zur Startseite](./../README.md)
