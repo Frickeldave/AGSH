@@ -8,6 +8,9 @@ Folgende Voraussetzungen müssen getroffen werden, um diese Workshop durchzufüh
 
 - Du benötigst ein aktuelles Ubuntu 24.04. Server-ISO
 - Dein Rechner (oder die vielmehr die VM die in diesem Kapitel erstellt wird), benötigt Internet Zugang
+- Kostenloses GitHub Konto
+- Installierter [Git-Client](https://git-scm.com/downloads)
+- Installierter Code-Editor deiner Wahl (In diesem Guide wird Visual Studio Code verwendet)
 
 ## Zusammenfassung der wichtigsten Informationen
 
