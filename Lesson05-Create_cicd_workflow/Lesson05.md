@@ -39,6 +39,14 @@ Anschließend kannst du alle Änderungen synchronisieren (push). Im Reiter "Acti
 
 Klickst du auf den Workflow erhälst du detaillierte Informationen über jeden einzelnen Workflow Schritt und kannst dir im Details die Ergebnisse anschauen.
 
+# Erklärung des Zielverzeichnisses
+
+Hast du einmal in die cicd.yaml reingeschaut, ist Dir vielleicht aufgefallen, dass alle Ansible Dateien in das Verzeichnis ```/home/github/ansible/ansible``` kopiert werden. Für das bessere Verständnis aller Folge-Kapitel, sollte dies noch näher erläutert werden.
+
+- **/home/github** ist das Verzeichnis des Users, der den Prozess ausführt.
+- **/home/github/ansible** ist das virtuelle Environment in dem Ansible läuft. Dies kann mit ```source ~/ansible/bin/activate``` aktiviert werden. Ab diesem Moment gelten die Einstellungen die in diesem Environment (Variablen, Pfade, etc.) definiert sind. Dies gilt nicht durchgängig, manche Pfade wie ```/``` oder ```~``` gelten nach wie vor weiter. Somit sind aber die Ansible executables wie *ansible*, *ansible-vault*, oder *ansible-playbook* nur verfügbar, wenn zuvor das venv aktiviert wird. Selbstverständlich kann dies in einer einzigen Semikolon-getrennten Befehlskette passieren: ```source ~/ansible/bin/activate; ansible --version;deactivate```.
+- **/home/github/ansible/ansible** bezeichnet dann das Verzeichnis, in dem alle notwendigen Ansible Dateien liegen, die im nächsten Kapitel erzeugt werden.
+
 - [Zurück zur Startseite](./../README.md)
 - [Voriges Kapitel](./../Lesson04-Install_GH_Runner/Lesson04.md)
 - [Nächstes Kapitel](./../Lesson06-Create_Ansible_playbook_workflow/Lesson06.md)

@@ -1,24 +1,40 @@
-# Lesson 06 - Einrichten eines workflows zum Ausführen von Ansible Playbooks
+# Lesson 06 - Anlegen der Ansible Dateien
 
-Sind alle Vorbereitungen getroffen, wird der CICD Workflow eingerichtet, der die Installation und Wartung von Ansible auf dem Master System automatisiert und sich darum kümmert dass alle Ansible Dateien immer in aktuellem Stand auf dem Master Server liegen.
+Die Ansible Dateien bestehen im wesentlichen aus den folgenden:
 
+- **ansible.cfg** - Die Ansible Konfigurationsdatei
+- **inventory.yaml** - Die Inventarisierung aller Systeme die verwaltet werden sollen
+- **playbooks** - Die Sequenzen, die letztendlich gegen die Zielsystem ausgeführt werden
+- **roles** - Rollen fassen mehrer Befehle und Variablen zu einer loogischen Einheit zusammen
 
-## Anlegen des Workflows
+Aktuell ist die cicd.yaml so gestaltet, dass der Job auch durchläuft, wenn keine Dateien vorhanden sind. Dies wird bei den betroffenen Befehlen mit einer vorgeschalteten if-Abfrage erreicht. Beispiel:
 
-Offne in deinem favorisierten Code-Editor das zuvor heruntergeladene Repository und lege in diesem die Verzeichnisse ```.github/worklows``` an. Wenn du in diesem Verzeichnis eine YAML Datei mit der Workflow Definition ablegst, wird diese automatisch von GitHub konsumiert und entsprechend den Angaben in der YAML Datei ausgeführt. Das *wann*, *wo* und *was* definierst du dabei alles in der YAML Datei.
+```bash
+if [ -f ${{ env.GITHUB_WORKFLOW_WORKDIR }}/AGSH/ansible/ansible.cfg ]; then cp ${{ env.GITHUB_WORKFLOW_WORKDIR }}/AGSH/ansible/ansible.cfg /home/github/ansible/ansible/ansible.cfg; fi
+```
 
-**HINWEIS:** Die genaue Beschreibung, was in der YMAL Datei passiert, ist Teil des interaktiven Workshops.
+Es wird also geprüft, ob im lokalen Quell-Repository die Datei "ansible.cfg" existiert. Wenn dies der Fall ist, wird die Datei in das Zielverzeichnis kopiert, andernfalls eben nicht.
 
-![Workflow directory](Screenshot%202024-06-07%20130623.png)
+## Kopieren aller Dateien
 
-Kopiere anschliessend die Datei [cicd.yaml](./cicd.yaml) aus diesem Repository in dein Zielrepository in den Pfad ```.github/workflows``` und passe die Zeile 23 ensprechend an.
+Dies Kapitel beschreibt, welche Dateien in deinem Repository angelegt werden müssen und welche Bedeutung diese haben. Erstelle in deinem Repository das Verzeichnis *ansible* um mit den weiteren Kapiteln fort zu fahren.
 
-Anschließend kannst du alle Änderungen synchronisieren (push). Im Reiter "Actions" auf GitHub sollte nun der cicd Workflow starten und erfolgreich ausgeführt werden.
+### ansible.cfg
 
-![Überprüfen des workflows](./Screenshot%202024-06-07%20154603.png)
+[Referenz](https://docs.ansible.com/ansible/latest/reference_appendices/config.html)
 
-Klickst du auf den Workflow erhälst du detaillierte Informationen über jeden einzelnen Workflow Schritt und kannst dir im Details die Ergebnisse anschauen.
+Diese Datei nimmt die grundsätzliche Konfiguration deiner Ansible Umgebung vor. Alle hier definierten Pfade sind relativ zum Arbeitsverzeichnis gesetzt. Führst du also z.B. ```ansible-playbook``` im Pfad */home/github/ansible/ansible* aus, wird das Inventar aufgrund der Zeile *inventory = ./hosts/inventory.yaml* im Pfad */home/github/ansible/ansible/hosts/inventory.yaml* gesucht.
+
+Kopiere diese Datei in das ansible-root Verzeichnis in deinem Repositories.
+
+### inventory.yaml
+
+[Referenz](https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html)
+
+In dieser Datei notierst du alle Systeme, die du mit Ansible verwalten möchtest. In unserem Beispiel ist dort nur ein Eintrag vorhanden, nämlich *localhost*. Das Inventar ist beliebig erweiterbar. Du kannst Gruppen bilden, für jeden Client/Gruppe beliebige Varialben definieren und die Verbindungseingeschaften zu den Systemen mit diesen Variablen steuern. Zudem kannst du auch die inventory.yaml mit beliebigen Datenquellen ersetzen. Zum Beispiel einer Maschinenliste aus AWS oder einer Datenbank.
+
+Kopiere diese Datei in das *hosts* Unterverzeichnis von *ansible* in deinem Repositories.
 
 - [Zurück zur Startseite](./../README.md)
-- [Voriges Kapitel](./../Lesson04-Install_GH_Runner/Lesson04.md)
+- [Voriges Kapitel](./../Lesson05-Create_cicd_workflow/Lesson05.md)
 - [Nächstes Kapitel](./../Lesson06-Create_Ansible_playbook_workflow/Lesson06.md)
