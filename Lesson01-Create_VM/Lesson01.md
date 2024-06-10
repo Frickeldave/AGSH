@@ -63,13 +63,15 @@ Jetzt wird die virtuelle Festplatte definiert. Setze die Größe heirbei auf 102
 
 Bei der Konfiguration des virtuellen CD-ROM Laufwerks, wird für die Installation des Betriebssystems wird die zuvor heruntergeladene Ubuntu 24.04. ISO Datei angegeben.
 
-![Maount Ubuntu 24.04 ISO](Screenshot%202024-06-07%20121339.png)
+![Mount Ubuntu 24.04 ISO](Screenshot%202024-06-07%20121339.png)
 
 Nach dem Durchlaufen des Wizards zur Erstellung einer VM, müssen noch einige Dinge an der VM angepasst werden. Wechsel nun in die Einstellungen der VM und aktiviere den Menüpunkt "Security". Dort wird in der Secure Boot Sektion das Template "Microsoft UEFI Certificate Authority" ausgewählt.
 
 ![Configure Secure Boot](Screenshot%202024-06-07%20121435.png)
 
-Nun ist deine virtuelle Mschine fertig für den Einsatz.
+Als letztes werden die Integration Services aktiviert. Dieses sind zwar nciht zwinged notwendig, machen aber die Arbeit mit der virtuellen Maschine um einiges konfortabler (Shared clipboard, auslesen der VM IP Adresse, und einiges mehr).
+
+Nun ist deine virtuelle Maschine fertig für den Einsatz.
 
 - [Zurück zur Startseite](./../README.md)
 - [Nächstes Kapitel](./../Lesson02-Install_Ubuntu/Lesson02.md)

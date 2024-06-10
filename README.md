@@ -7,3 +7,8 @@ Diese Seite beschreibt den AGSH Workshop. In diesem geht darum, mit Ansible und 
 Die Verwaltung eines SmartHome ist ein gut greifbares Szenario aber vor ähnlichen Herausforderungen wie daheim zu Hause (Akzeptanz durch Stakeholder, wenig zeitliche Ressourcen, kein Budget für aufwändige Softwaremanagement Suiten) stehen viele CICD Umgebungen in denen "Dinge" automatisiert werden müssen.
 
 Dieses GitHub Repository begleitet dich durch den kompletten 70 Minuten Workshop, den ich erstmals zur Cloudland 2024 gehalten habe.
+
+- [Lession 01 - Erstellen einer Hyper-V VM](./Lesson01-Create_VM/Lesson01.md)
+- [Lession 02 - Installation von Ubuntu 24.04](./Lesson02-Install_Ubuntu/Lesson02.md)
+- [Lession 03 - Erstellen des GitHub repositories](./Lesson03-Create_GH_Repo/Lesson03.md)
+- [Lession 04 - Installation des GitHub runners](./Lesson04-Install_GH_Runner/Lession04.md)

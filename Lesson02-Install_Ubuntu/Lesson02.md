@@ -60,6 +60,16 @@ Im letzten Schritt wird das System noch einmnal neugestartet.
 
 ![Last step, installation log](./Screenshot%202024-06-07%20122529.png)
 
+Nach dem Neustart des System melde dich einmal auf dem System an, aktualisiere dies und installiere die azure-tools für die Integration der Hyper-V auf dein Host Systems.
+
+```bash
+sudo apt update
+sudo apt upgrade
+sudo apt install azure-tools
+```
+
+## SSH Verbindung aufbauen
+
 Nach dem Neustart teste bitte einmal den Zugriff auf den Server via SSH. Die Übertragung von Inhalten aus der Zwischenablage funktioniert eher Semi-gut, daher ist ein direkter SSH Zugriff von deinem Host-System auf die virtuelle Maschine absolut empfehlenswert. Es ist kein spezielles SSH Tools notwendig. Öffne einfach ein Powershell Session und starte die SSH Session mit folgendem Befehle:
 
 ```ssh aadmin@<IP ADDRESS OF VIRTUAL MASCHINE>```
@@ -67,6 +77,10 @@ Nach dem Neustart teste bitte einmal den Zugriff auf den Server via SSH. Die Üb
 Bestätige einmal den Fingerprint mit ```yes``` und authentifiziere dich mit deinem Benutzernamen und Kennwort.
 
 ![Logon via SSH](./Screenshot%202024-06-07%20132558.png)
+
+**Hinweis:** Die IP Adresse der Hyper-V Instanz wechselt nach jedem Neustart. Daher ist einmal nach einem Neustart die Anmeldung auf dem Ubuntu System notwendig umd ie IP Adresse mit ```ip addr show``` zu ermitteln.
+Alternativ kannst du die IP Adresse mit folgenden Befehl auslesen, wenn du die Integration Tools aktiviert hast (Aktivierung in Lession 01 und Installation der Azure-Tools in Lession 02).
+```get-vm | select -ExpandProperty networkadapters | select vmname, macaddress, switchname, ipaddresses```
 
 - [Zurück zur Startseite](./../README.md)
 - [Voriges Kapitel](./../Lesson01-Create_VM/Lesson01.md)
