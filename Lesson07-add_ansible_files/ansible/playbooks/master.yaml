@@ -1,0 +1,10 @@
+---
+
+- name: Master
+  hosts: master
+  become: true
+  gather_facts: true
+
+  tasks:
+
+  - include_tasks: baseline.yaml

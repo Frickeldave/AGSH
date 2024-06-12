@@ -1,6 +1,6 @@
 # Lesson 02 - Virtuelle Maschine erstellen
 
-Nach der Erstellung der virtuellen Maschine muss auf dieser noch Betriebssystem installiert werden. Die Installation erfolgt im Grundsatz den Standardeinstellungen von Ubunutu 24.04.
+Nach der Erstellung der virtuellen Maschine muss auf dieser noch Betriebssystem installiert werden. Die Installation erfolgt im Grundsatz den Standardeinstellungen von Ubuntu 24.04.  Natürlich kannst du alle Lessons auch auf Basis einer anderen Linux Distribution ausführen. Ggf. weichen dann einige Schritte ab.
 
 Hast du im vorigen Schritt alles korrekt gemacht, sollte direkt nach dem Start der Installationsdialog von Ubuntu starten. Wähle hier den Menüpunkt "Try or Install Ubuntu Server".
 
@@ -70,7 +70,7 @@ sudo apt install azure-tools
 
 ## SSH Verbindung aufbauen
 
-Nach dem Neustart teste bitte einmal den Zugriff auf den Server via SSH. Die Übertragung von Inhalten aus der Zwischenablage funktioniert eher Semi-gut, daher ist ein direkter SSH Zugriff von deinem Host-System auf die virtuelle Maschine absolut empfehlenswert. Es ist kein spezielles SSH Tools notwendig. Öffne einfach ein Powershell Session und starte die SSH Session mit folgendem Befehle:
+Nach dem Neustart teste bitte einmal den Zugriff auf den Server via SSH. Die Übertragung von Inhalten aus der Zwischenablage funktioniert eher Semi-gut, daher ist ein direkter SSH Zugriff von deinem Host-System auf die virtuelle Maschine absolut empfehlenswert. Es ist kein spezielles SSH Tools notwendig. Öffne einfach eine Terminal (Bsp. Powershell) Session und starte die SSH Session mit folgendem Befehle:
 
 ```ssh aadmin@<IP ADDRESS OF VIRTUAL MASCHINE>```
 
@@ -83,5 +83,5 @@ Alternativ kannst du die IP Adresse mit folgenden Befehl auslesen, wenn du die I
 ```get-vm | select -ExpandProperty networkadapters | select vmname, macaddress, switchname, ipaddresses```
 
 - [Zurück zur Startseite](./../README.md)
-- [Voriges Kapitel](./../Lesson01-Create_VM/Lesson01.md)
-- [Nächstes Kapitel](./../Lesson03-Create_GH_Repo/Lesson03.md)
+- [Voriges Kapitel](../Lesson01-create_a_vm/Lesson01.md)
+- [Nächstes Kapitel](../Lesson03-create_gh_repository/Lesson03.md)

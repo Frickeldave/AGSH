@@ -1,0 +1,33 @@
+---
+- name: "Install docker"
+  include_tasks: "setup-docker-{{ ansible_pkg_mgr }}.yaml"
+
+- name: "Create docker user {{docker_username}}"
+  user:
+    name: "{{docker_username}}"
+    shell: /bin/bash
+    password: ""
+    home: "/home/{{docker_username}}"
+    uid: "{{docker_uid}}"
+
+- name: "Add docker user {{docker_username}} to docker group"
+  user:
+    name: "{{docker_username}}"
+    groups: docker
+    append: true
+
+- name: "Add ansible executing user to docker group"
+  user:
+    name: "{{ ansible_user }}"
+    groups: docker
+    append: true
+
+- name: "Create docker configuration directory"
+  file:
+    path: "/etc/docker"
+    state: directory
+
+- name: "Create docker dameon configuration file"
+  template:
+    src: daemon.json.j2
+    dest: /etc/docker/daemon.json

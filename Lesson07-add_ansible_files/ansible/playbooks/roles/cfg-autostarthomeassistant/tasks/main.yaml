@@ -1,0 +1,11 @@
+---
+
+- name: "Create the autostart directory"
+  ansible.builtin.file:
+    path: "/etc/xdg/lxsession/LXDE-pi"
+    state: directory
+
+- name: "Copy autostart file"
+  template:
+    src: autostart.j2
+    dest: "/etc/xdg/lxsession/LXDE-pi/autostart"

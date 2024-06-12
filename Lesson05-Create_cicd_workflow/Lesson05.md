@@ -6,12 +6,12 @@ Sind alle Vorbereitungen getroffen, wird ein CICD Workflow eingerichtet, der bei
 - **Aktualisierung des Betriebssystem falls notwendig.** Man kann vortrefflich darüber streiten, welche Strategie hier die die beste ist. Immer das System auf Stand halten oder zu definierten Zeitpunkten kontrollierte Updates fahren. Da letzteres ein erhöhtes Maßa an Planung und Disziplin benötigt, bevorzuge ich zeitnahe Updates. Möchte man nicht jede Änderung sofort einspielen, empfiehlt sich im professionellen Umfeld die Etablierung eines eigenen Ubuntu Repositories.
 - **Installation von Ansible.** Ansible wird ein virtuelles python environment (venv) installiert. Dabei wird die Versionsnummer explizit angegeben. Im Falle eines Updates muss diese entsprechend angepasst werden. Die venv Funktionalität ist auch wunderbar geeignet um mehrere Ansible Versionen prallel zu betreiben.
 - **Kopieren aller Ansible Dateien.** Es werden alle Palybooks, Roles und Konfigurationsdateien für Ansible auf das lokale System kopiert.
-- **Erzeugen einer Secret Datei für den Ansible vault.** Das Secret für diese Datei wird aus einem Scret generiert, welches wir im Github Repository anlegen. DIes ist auch der Grund, warum das Repository auf "private" gestellt werden muss.
-- **Erzeugen einer private-key Datei für den Zugriff auf Zielsysteme**. Ansible benötigt für den Zugriff auf Linux Systeme einen Private Key (Im Falle von Windows gibt es mehrere Möglichkeiten, die nicht Teil dieses Workshops sind). Dieser Private Key ist, genauso wie das vault-secret, im GitHub Repository gespeichert.
+- **Kopieren einer Secret Datei für den Ansible vault.** Erstellen einer Secret Datei aufgrund eines in GitHub hinterlegten Secure-Strings. Dies ist auch der Grund, warum das Repository auf "private" gestellt werden muss.
+- **Kopieren einer private-key Datei für den Zugriff auf Zielsysteme**. Ansible benötigt für den Zugriff auf Linux Systeme einen Private Key (Im Falle von Windows gibt es mehrere Möglichkeiten, die nicht Teil dieses Workshops sind). Dieser Private Key ist, genauso wie das vault-secret, im GitHub Repository gespeichert.
 
 **HINWEIS:** Die genaue Beschreibung, was in der YMAL Datei passiert, ist Teil des interaktiven Workshops.
 
-## Eintragen der Secrets
+## Eintragen des Secrets für den Ansible-Vault
 
 Der Ansible vault ist  eine integrierte secret management Lösung, die es Dir ermöglicht, einzelne Strings oder auch ganze Dateien mit dem Befehl ```ansible-vault``` zu verschlüsseln und im Git Repository abzulegen. Damit Ansible während der Laufzeit aber die String auch wieder entschlüsseln kann, benötigt es das Kennwort mit dem die Verschlüsselung durchgeführt worden ist. Natürlich landet dieses Kennwort nicht einfach im Repository, sondern in einem GitHub Secret. Dieses Secret wird während der CICD Phase (also immer wenn neuer Code gepushed wird) ausgelesen und in eine gesicherte lokale Datei auf dem Ansible Server abgelegt.
 
@@ -21,7 +21,36 @@ Zuvor müssen die Secrets in GitHub eingetragen werden. Navigiere dafür in dein
 
 ![Create new secret](./Screenshot%202024-06-07%20150500.png)
 
-Wiederhole diesen Schritt, diesmal lege aber ein Secret mit dem Namen ```AGSH_ANSIBLE_PRVKEY``` und dem Wert ```aadmin``` an.
+## Eintragen des Screts für den Private-Key
+
+Als erstes muss ein private-key erzeugt werden. Öffne dafür eine Powershell Konosle (oder gerne auch eine Bash, Hauptsache ssh-keygen ist verfügbar) und erzeuge ein private/public key-pair wie folgt: 
+
+```powershell
+PS> ssh-keygen -t rsa -b 4096
+Generating public/private rsa key pair.
+Enter file in which to save the key (C:\Users\USERNAME/.ssh/id_rsa): c:\users\USERNAME\.ssh\id_rsa_AGSH
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in c:\users\USERNAME\.ssh\id_rsa_AGSH
+Your public key has been saved in c:\users\USERNAME\.ssh\id_rsa_AGSH.pub
+The key fingerprint is:
+SHA256:HSpRpt3D7g5Big3rYj+joShDJvyCeklk2ewuISvA7P0 ansible@frickeldave
+The key's randomart image is:
++---[RSA 4096]----+
+|        o        |
+|       = o       |
+|   +. o o =      |
+|  + o= + + o     |
+|+o .o + S o      |
+|+*o..  . o       |
+|B+*+.   . .      |
+|B=+*+    o       |
+|BooooE    .      |
++----[SHA256]-----+
+PS >
+```
+
+Öffne nun die erzeugte Datei "*C:\Users\dakoenig\.ssh\id_rsa_AGSH*" kopiere den Inhalt in die Zwischenablage, lege ein GitHub Secret mit dem Namen ```AGSH_ANSIBLE_PRVKEY``` und dem Wert ```aadmin``` an und kopiere den Inhalt der Zwischenablage in den "Value". Beachte dabei, dass nach dem private Key noch eine Leerzeile enthalten sein muss. 
 
 ## Anlegen des Workflows
 
@@ -47,6 +76,26 @@ Hast du einmal in die cicd.yaml reingeschaut, ist Dir vielleicht aufgefallen, da
 - **/home/github/ansible** ist das virtuelle Environment in dem Ansible läuft. Dies kann mit ```source ~/ansible/bin/activate``` aktiviert werden. Ab diesem Moment gelten die Einstellungen die in diesem Environment (Variablen, Pfade, etc.) definiert sind. Dies gilt nicht durchgängig, manche Pfade wie ```/``` oder ```~``` gelten nach wie vor weiter. Somit sind aber die Ansible executables wie *ansible*, *ansible-vault*, oder *ansible-playbook* nur verfügbar, wenn zuvor das venv aktiviert wird. Selbstverständlich kann dies in einer einzigen Semikolon-getrennten Befehlskette passieren: ```source ~/ansible/bin/activate; ansible --version;deactivate```.
 - **/home/github/ansible/ansible** bezeichnet dann das Verzeichnis, in dem alle notwendigen Ansible Dateien liegen, die im nächsten Kapitel erzeugt werden.
 
+## Testen von ansible
+
+Führe nun einen Ansible-Ping aus, der überprüft ob der Zugriff funktioniert.
+
+```bash
+ansible -m ping localhost
+```
+
+Du wirst die folgende Ausgabe erhalten: 
+
+  ```json
+[WARNING]: No inventory was parsed, only implicit localhost is available
+localhost | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+```
+
+Das "WARNING" sagt aus, dass ansible aktuell kein Inventar findet und dewegen virtuell, nur für diese Ausführung, einen localhost Eintrag erzeugt. Dies werden wir in den folgenden 2 Lessons korrigieren.
+
 - [Zurück zur Startseite](./../README.md)
-- [Voriges Kapitel](./../Lesson04-Install_GH_Runner/Lesson04.md)
-- [Nächstes Kapitel](./../Lesson06-Create_Ansible_playbook_workflow/Lesson06.md)
+- [Voriges Kapitel](../Lesson04-install_github_runner/Lesson04.md)
+- [Nächstes Kapitel](./../Lesson06-create_ansible_user/Lession06.md)

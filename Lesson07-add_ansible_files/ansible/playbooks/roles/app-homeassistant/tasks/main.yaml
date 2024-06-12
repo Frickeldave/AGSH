@@ -1,0 +1,54 @@
+---
+- name:
+  ansible.builtin.debug:
+    msg: "Remove existing homeassistant data: {{ homeassistant_reset }}"
+
+- name:
+  ansible.builtin.debug:
+    msg: "Homeassistant port: {{ homeassistant_port }}"
+
+- name:
+  ansible.builtin.debug:
+    msg: "Install homeassistant version: {{ homeassistant_version }}"
+
+
+- name: "Stop potential started homeassistant"
+  ansible.builtin.shell: | 
+    docker stop homeassistant
+    docker rm homeassistant
+  no_log: true
+  ignore_errors: yes
+
+- name: "Recursively remove data directory in case of a reset"
+  ansible.builtin.file:
+    path: /home/{{ homeassistant_exec_user }}/homeassistant
+    state: absent
+  when: homeassistant_reset == "true"
+
+- name: "Create the homeassistant base directory"
+  ansible.builtin.file:
+    path: "/home/{{ homeassistant_exec_user }}/homeassistant"
+    state: directory
+    owner: "{{ homeassistant_exec_user }}"
+    group: "{{ homeassistant_exec_user }}"
+    mode: 0700
+  
+- name: "Copy compose file"
+  template:
+    src: docker-compose.yaml.j2
+    dest: "/home/{{ homeassistant_exec_user }}/docker-compose-homeassistant.yaml"
+    owner: "{{ homeassistant_exec_user }}"
+    group: "{{ homeassistant_exec_user }}"
+    mode: 0700
+
+- name: "Start homeassistant"
+  shell: | 
+    docker compose -f /home/{{ homeassistant_exec_user }}/docker-compose-homeassistant.yaml up -d --force-recreate --wait
+
+- name: "Install HACS"
+  shell: |
+    docker compose -f /home/{{ homeassistant_exec_user }}/docker-compose-homeassistant.yaml exec homeassistant bash -c "wget -O - https://get.hacs.xyz | bash -"
+
+- name: "Restart container"
+  shell: |
+    docker compose -f /home/{{ homeassistant_exec_user }}/docker-compose-homeassistant.yaml restart homeassistant

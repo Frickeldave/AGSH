@@ -1,0 +1,5 @@
+---
+ssh_group: homenet_ssh
+ssh_port: 22
+ssh_allow_tcp_forward: "yes" # Use "" here. Otherwise ansible will convert to true which results in a wrong configuration file
+ssh_max_sessions: 4

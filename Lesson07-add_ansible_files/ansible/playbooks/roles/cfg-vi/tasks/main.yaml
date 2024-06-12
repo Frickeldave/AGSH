@@ -1,0 +1,10 @@
+--- 
+
+- name: Configure vi
+  template:
+    src: vimrc.tiny.j2
+    dest: "/etc/vimrc.tiny"
+    owner: "root"
+    group: "root"
+    mode: '0644'
+    backup: no

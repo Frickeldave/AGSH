@@ -29,7 +29,7 @@ sudo su github
 cd~
 ```
 
-Die folgeden Script-Snippets sind nur Beispiele zum Stand der Erstellung dieses Artikels. Für ein aktuelles Script, wechsele bitte in das GitHub Repository, welches du in [Lesson 3](./../Lesson03-Create_GH_Repo/Lesson03.md) angelegt hast. Navigiere dort zu *"Settings -> Actions -> Runners"*, klicke auf *"New self-hosted runner"* und wähle *"Linux"* als Betriebssystem.
+Die folgeden Script-Snippets sind nur Beispiele zum Stand der Erstellung dieses Artikels. Für ein aktuelles Script, wechsele bitte in das GitHub Repository, welches du in [Lesson 3](../Lesson03-create_gh_repository/Lesson03.md) angelegt hast. Navigiere dort zu *"Settings -> Actions -> Runners"*, klicke auf *"New self-hosted runner"* und wähle *"Linux"* als Betriebssystem.
 
 ![Settings of the github runner runner](./Screenshot%202024-06-07%20131043.png)
 
@@ -67,5 +67,5 @@ Im letzten Schritt gehe auf deine GitHub-Runner Konfigurationsseite und prüfe, 
 ![Check github runner](./Screenshot%202024-06-10%20080659.png)
 
 - [Zurück zur Startseite](./../README.md)
-- [Voriges Kapitel](./../Lesson03-Create_GH_Repo/Lesson03.md)
-- [Nächstes Kapitel](./../Lesson05-Create_cicd_workflow/lesson05.md)
+- [Voriges Kapitel](../Lesson03-create_gh_repository/Lesson03.md)
+- [Nächstes Kapitel](./../Lesson05-create_cicd_workflow/lesson05.md)

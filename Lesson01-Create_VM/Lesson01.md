@@ -1,16 +1,18 @@
 # Lesson 01 - Virtuelle Maschine erstellen
 
-Der Workshop setzt eine vorinstallierte VM auf Basis von Hyper-V voraus. Alle Voraussetzungen die zu treffen sind, sind in diesem Kapitel beschrieben.
+Der Workshop benötigt eine vorinstallierte VM mit einem LInux OS (Idealerweise Ubuntu 24.04). Die Installation deiner VM ist das Ziel dieses Kapitels. Hier zeige ich das Vorgehen auf Basis einer Hyper-V VM. Natürlich kannst du alles Lessons auch auf Basis eines beliebigen anderen Hypervisors oder einer Cloud VM ausführen. Wichtig ist, du kannst per SSH auf die VM zugreifen.
 
 ## Voraussetzungen
 
 Folgende Voraussetzungen müssen getroffen werden, um diese Workshop durchzuführen:
 
-- Du benötigst ein aktuelles Ubuntu 24.04. Server-ISO
-- Dein Rechner (oder die vielmehr die VM die in diesem Kapitel erstellt wird), benötigt Internet Zugang
-- Kostenloses GitHub Konto
-- Installierter [Git-Client](https://git-scm.com/downloads)
-- Installierter Code-Editor deiner Wahl (In diesem Guide wird Visual Studio Code verwendet)
+- Dein Rechner sollte über eine einigermaßen moderne CPU und genügend Arbeitsspeicher verfügen, damit du 4 GB exklusiv für die VM zur Verfügung hast. 
+- Alle Schritte hier beschriebenen Schritte sind auf Windows 11 23H2 getestet. Auf anderen Betriebssystemen kann die Vorgehensweise abweichen, ist aber im Grundsatz durchführbar. 
+- Du benötigst ein aktuelles Ubuntu 24.04. Server-ISO.
+- Dein Rechner (oder die vielmehr die VM die in diesem Kapitel erstellt wird), benötigt Internet Zugang.
+- Kostenloses GitHub Konto.
+- Installierter [Git-Client](https://git-scm.com/downloads).
+- Installierter Code-Editor deiner Wahl (In diesem Guide wird Visual Studio Code verwendet).
 
 ## Zusammenfassung der wichtigsten Informationen
 
@@ -24,8 +26,7 @@ Selbstverständlich sollten produktive Syteme nicht auf diese Art konfiguriert w
 
 ## Hyper-V aktivieren
 
-Willst du eine Hyper-V VM installieren, ist als erstes die Aktivierung der Hyper-V Rolle notwendig. Alle folgenden Hinweise basieren auf Windows 11 Version 24H1.
-Starte damit, dass du den Windows 11 Feature Wizard aufrufst.
+Willst du eine Hyper-V VM installieren, ist als erstes die Aktivierung der Hyper-V Rolle notwendig. Starte damit, dass du den Windows 11 Feature Wizard aufrufst.
 
 ![Call windows feature wizard](Screenshot%202024-06-07%20115920.png)
 
@@ -74,4 +75,4 @@ Als letztes werden die Integration Services aktiviert. Dieses sind zwar nciht zw
 Nun ist deine virtuelle Maschine fertig für den Einsatz.
 
 - [Zurück zur Startseite](./../README.md)
-- [Nächstes Kapitel](./../Lesson02-Install_Ubuntu/Lesson02.md)
+- [Nächstes Kapitel](../Lesson02-install_ubuntu_in_vm/Lesson02.md)

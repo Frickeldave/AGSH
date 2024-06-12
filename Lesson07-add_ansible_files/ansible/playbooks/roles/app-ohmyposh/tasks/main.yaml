@@ -1,0 +1,142 @@
+---
+
+#################################################################################
+# Base directory
+#################################################################################
+
+- name: ansible create oh-my-posh directory
+  file:
+    path: "{{ohmyposh_linux_bin_location}}"
+    state: directory
+
+
+#################################################################################
+# Download and install nerd font
+#################################################################################
+
+- name: "create nerdfonts_{{nerdfont}} directory"
+  file:
+    path: "/usr/share/fonts/nerdfonts_{{nerdfont}}"
+    state: directory
+
+- name: Check if font exists locally
+  stat:
+    path: "{{ohmyposh_linux_bin_location}}/{{nerdfont}}.zip"
+  register:
+    "font_is_downloaded"
+
+- name: Download font
+  get_url:
+    url: "{{nerdfont_url}}"
+    dest: "{{ohmyposh_linux_bin_location}}/{{nerdfont}}.zip"
+  when: not font_is_downloaded.stat.exists
+
+- name: Extract zip font file
+  unarchive:
+    src: "{{ohmyposh_linux_bin_location}}/{{nerdfont}}.zip"
+    dest: "/usr/share/fonts/nerdfonts_{{nerdfont}}"
+    remote_src: yes
+
+- name: "Update font-cache"
+  shell: "fc-cache -fv"
+
+#################################################################################
+# Download and install binary
+#################################################################################
+
+- name: Check if binary exists locally
+  stat:
+    path: "{{ohmyposh_linux_bin_location}}/oh-my-posh-{{ohmyposh_version}}"
+  register:
+    "bin_is_downloaded"
+
+- debug: 
+    var: ansible_architecture
+
+- name: Download ARM binary
+  get_url:
+    url: "{{ohmyposh_linux_bin_url_arm}}"
+    dest: "{{ohmyposh_linux_bin_location}}/oh-my-posh-{{ohmyposh_version}}"
+  when: not bin_is_downloaded.stat.exists and ansible_architecture == "armv6l" or ansible_architecture == "armv7l"
+
+- name: Download ARM64 binary
+  get_url:
+    url: "{{ohmyposh_linux_bin_url_arm64}}"
+    dest: "{{ohmyposh_linux_bin_location}}/oh-my-posh-{{ohmyposh_version}}"
+  when: not bin_is_downloaded.stat.exists and ansible_architecture == "aarch64"
+
+
+- name: Download AMD64 binary
+  get_url:
+    url: "{{ohmyposh_linux_bin_url_amd64}}"
+    dest: "{{ohmyposh_linux_bin_location}}/oh-my-posh-{{ohmyposh_version}}"
+  when: not bin_is_downloaded.stat.exists and ansible_architecture == "x86_64"
+
+- name: update link to binary
+  file:
+    src: "{{ohmyposh_linux_bin_location}}/oh-my-posh-{{ohmyposh_version}}"
+    dest: "{{ohmyposh_linux_bin_location}}/oh-my-posh"
+    state: link
+
+#################################################################################
+# Download and install themes
+#################################################################################
+- name: ansible create oh-my-posh-themes directory
+  file:
+    path: "{{ohmyposh_linux_bin_location}}/themes"
+    state: directory
+
+- name: Check if themes exists locally
+  stat:
+    path: "{{ohmyposh_linux_bin_location}}/themes/oh-my-posh-themes-{{ohmyposh_version}}.zip"
+  register:
+    "theme_is_downloaded"
+
+- name: Download themes
+  get_url:
+    url: "{{ohmyposh_themes_url}}"
+    dest: "{{ohmyposh_linux_bin_location}}/themes/oh-my-posh-themes-{{ohmyposh_version}}.zip"
+  when: not theme_is_downloaded.stat.exists
+
+- name: Extract zip themes file
+  unarchive:
+    src: "{{ohmyposh_linux_bin_location}}/themes/oh-my-posh-themes-{{ohmyposh_version}}.zip"
+    dest: "{{ohmyposh_linux_bin_location}}/themes"
+    remote_src: yes
+
+
+#################################################################################
+# Download and install themes
+#################################################################################
+- name: Set permissions for all files
+  file:
+    dest: "{{ohmyposh_linux_bin_location}}"
+    owner: root
+    group: root
+    mode: 0755
+    recurse: yes
+
+- name: change permissions
+  file:
+    path: "{{ohmyposh_linux_bin_location}}/themes"
+    state: directory
+    mode: 0777
+
+- name: Add oh-my-posh to systemwide bashrc
+  blockinfile:
+    path: /etc/bash.bashrc
+    backup: no
+    marker: "#### {mark} ANSIBLE MANAGED BLOCK ####"
+    state: present
+    block: |
+      if [ -x {{ohmyposh_linux_bin_location}}/oh-my-posh ]
+      then
+        if [ -f {{ohmyposh_linux_bin_location}}/themes/{{ohmyposh_theme}}.omp.json ]
+        then
+          # activate choosen theme
+          eval "$({{ohmyposh_linux_bin_location}}/oh-my-posh --init --shell bash --config {{ohmyposh_linux_bin_location}}/themes/{{ohmyposh_theme}}.omp.json)"
+        else
+          # activate default theme
+          eval "$({{ohmyposh_linux_bin_location}}/oh-my-posh --init --shell bash)"
+        fi
+      fi
