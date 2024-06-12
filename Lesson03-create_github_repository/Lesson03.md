@@ -40,11 +40,14 @@ Im Anschluss kannst du deinen GitHub-Benutzernamen und das PAT eingeben um dich 
 
 ## Username und E-Mail definieren
 
-Dieser Schritt ist nur notwendig, wenn du deinen Git-Username und deine Git-Mail nicht schon zuvor "*global*" gesetzt hast. Ich bevorzuge es, den Username und die Mail Adresse die git benötigt pro Repository zu definieren. Wechsel also in deiner Shell in das Verzeichnis deines Repositories und setze den Username und die Mailadresse.
+Ich bevorzuge es, den Username und die Mail Adresse die git benötigt pro Repository zu definieren. Wechsel also in deiner Shell in das Verzeichnis deines Repositories und setze den Username und die Mailadresse.
 
 ```bash
 git config user.name "First Name"
 git config user.email "your@mail.de"
+```
+
+Dieser Schritt ist nur notwendig, wenn du deinen Git-Username und deine Git-Mail nicht schon zuvor "*global*" gesetzt hast.
 
 - [Zurück zur Startseite](./../README.md)
 - [Voriges Kapitel](../Lesson02-install_ubuntu_in_vm/Lesson02.md)
