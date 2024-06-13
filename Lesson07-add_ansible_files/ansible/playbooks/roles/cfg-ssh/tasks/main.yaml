@@ -13,23 +13,23 @@
 
 - name: "Create homenet_ssh group"
   group:
-    name: "homenet_ssh"
+    name: "agsh_ssh"
 
 - name: "Add ansible-user to sudo group"
   user:
     name: "ansible"
-    groups: "homenet_ssh"
+    groups: "agsh_ssh"
     append: true # --> user is not removed from any other group
 
-- name: Check if user 'dave' exist
-  command: id dave
+- name: Check if user 'aadmin' exist
+  command: id aadmin
   ignore_errors: yes
   register: user_check
 
-- name: Add user 'dave' to group 'homenet_ssh'
+- name: Add user 'aadmin' to group 'agsh_ssh'
   user:
-    name: dave
-    groups: homenet_ssh
+    name: aadmin
+    groups: agsh_ssh
   when: user_check.rc == 0
 
 - name: Configure motd

@@ -26,6 +26,12 @@ sudo chmod 700 /home/ansible/.ssh
 sudo chmod 600 /home/ansible/.ssh/authorized_keys
 ```
 
+Setze als letztes noch ein Kennwort für den User:
+
+```bash
+passwd ansible
+```
+
 Du kannst den Zugriff im Anschluss mit folgendem Befehl testen:
 
 ```powershell

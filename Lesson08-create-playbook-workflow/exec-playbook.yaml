@@ -1,0 +1,33 @@
+name: exec-playbook
+on: 
+  workflow_call:
+    inputs:
+      ans_target_playbook:
+        description: The relative path to the playbook (MyPlaybook.yaml)
+        required: false
+        default: invalid.yaml
+        #default: "-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
+        type: string
+      ans_limit:
+        description: The limitation to run the playbook
+        required: true
+        default: "invalid"
+        type: string
+      ans_vars:
+        description: The variables that should be given to the playbook
+        required: false
+        default: ""
+        type: string
+
+jobs:
+
+  execute-playbook:
+    runs-on: self-hosted
+    steps:
+
+      - name: Execute the playbook
+        run: | 
+          source ~/ansible/bin/activate
+          cd ~/ansible/ansible
+          ansible-playbook ./playbooks/${{ inputs.ans_target_playbook }} --private-key "~/ansible/ansible/.ssh/ansible_ssh.key" -u ansible --ssh-extra-args "-o StrictHostKeyChecking=no" --limit ${{ inputs.ans_limit }} --extra-vars "${{ inputs.ans_vars }}"
+          deactivate

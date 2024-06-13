@@ -70,13 +70,13 @@ Wir haben in [Lesson05](./../Lesson05-create_cicd_workflow/Lesson05.md) den Work
 
 ## Testen deiner Ansible Installation
 
-Zum testen der Installation wiederholen wir den Aufruf aus [Lesson05](./../Lesson05-create_cicd_workflow/Lesson05.md). 
+Zum testen der Installation wiederholen wir den Aufruf aus [Lesson05](./../Lesson05-create_cicd_workflow/Lesson05.md).
 
 ```bash
-ansible -m ping localhost
+source ~/ansible/bin/activate;cd ~/ansible/ansible;ansible -m ping localhost;deactivate
 ```
 
-Im Gegensatz zum ersten Test sollte jetzt keine Warnung mehr auftauchen, dass das inventory nicht geparsed werden konnte. Der Client wird im Inventory gefunden und Ansible verbindet sich erfolgreich via SSH: 
+Im Gegensatz zum ersten Test sollte jetzt keine Warnung mehr auftauchen, dass das inventory nicht geparsed werden konnte. Der Client wird im Inventory gefunden und Ansible verbindet sich erfolgreich via SSH:
 
 ```json
 master | SUCCESS => {
@@ -86,6 +86,29 @@ master | SUCCESS => {
     "changed": false,
     "ping": "pong"
 }
+```
+
+Jetzt wollen wir natürlich auch noch wissen, ob wir wirklich was am Client ausführen können. Also führen wir das allererste mal ein playbook aus.
+
+```bash
+source ~/ansible/bin/activate;cd ~/ansible/ansible;ansible-playbook ./playbooks/master.yaml;deactivate
+```
+
+Mit diesem Playbook passiert noch nicht all zu viel, aber wir bekommen im besten Fall eine Übersicht über die erfolgreiche Ausführung:
+
+```bash
+PLAY [Master] *************************************************************************************************************************************************************************
+
+TASK [Gathering Facts] ****************************************************************************************************************************************************************
+ok: [master]
+
+TASK [Output some basic stuff] ********************************************************************************************************************************************************
+ok: [master] => {
+    "msg": "This is a very first debug message from the AGSH workshop lesson"
+}
+
+PLAY RECAP ****************************************************************************************************************************************************************************
+master                     : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 ```
 
 - [Zurück zur Startseite](./../README.md)
