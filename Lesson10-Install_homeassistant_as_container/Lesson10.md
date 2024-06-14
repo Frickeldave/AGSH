@@ -30,8 +30,8 @@ jobs:
   execute-ansible:
     uses: ./.github/workflows/exec-playbook.yaml
     with:
-      ans_target_playbook: pamela.yaml
-      ans_limit: pamela
+      ans_target_playbook: master.yaml
+      ans_limit: master
       ans_vars: homeassistant_reset=${{ inputs.homeassistant_reset }} homeassistant_port=${{ inputs.homeassistant_port }}
 
 ```
@@ -76,11 +76,16 @@ Die notwendigen Rollen sind schon in [Lession07](./../Lesson07-add_ansible_files
       name: app-homeassistant
 ```
 
-Mit diesen Tasks wird *docker* und *docker compose* installiert und anschließen eine *compose-Datei* auf das System verteilt und die darin definierten Container gestartet.
+Statt der alten String Variable werden nun, analog zum playbook, 2 Variablen für den Port von HomeAssistent und die Reset Funktion entgegen genommen. 
+Dann wird in den Tasks *docker* und *docker compose* installiert und anschließend eine *compose-Datei* auf das System verteilt, um mit der die darin definierten Container zu starten.
 
 ## Community plugin oder Kommandozeile
 
 Es gibt durchaus auch Module, um mit Ansible den Docker Daemon oder auch Docker Compose direkt anzusprechen. Wie so oft, musst du für dich abwägen, willst du ein zusätzliches Modul aktivieren, oder wie ich, mit Commandline Kommandos auskommen.
+
+## Testen
+
+Nun schnapp Dir die IP-Adresse deiner virtuellen Maschine und gib im Browser die HomeAssistent URL ein: http://<IPADDRESS>:8123
 
 - [Zurück zur Startseite](./../README.md)
 - [Voriges Kapitel](./../Lesson09-Installation_of_a_baseline/Lession09.md)
