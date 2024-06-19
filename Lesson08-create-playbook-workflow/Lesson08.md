@@ -23,7 +23,7 @@ on:
   ...
 ```
 
-Wenn du (nach einem Push) einen Blich auf deine GitHub Actions wirfst, wirst du sehen, dass zwar der Workflow "exec-playbook" vorhanden ist, aber du keine Möglichkeit hast, diesen aufzurufen.
+Wenn du (nach einem Push) einen Blick auf deine GitHub Actions wirfst, wirst du sehen, dass zwar der Workflow "exec-playbook" vorhanden ist, aber du keine Möglichkeit hast, diesen aufzurufen.
 
 ![exec-playbook view](./Screenshot%202024-06-13%20172755.png)
 
@@ -106,7 +106,7 @@ jobs:
   execute-ansible:
     uses: ./.github/workflows/exec-playbook.yaml
     with:
-      ans_target_playbook: master.yaml
+      ans_target_playbook: master01.yaml
       ans_limit: master
       ans_vars: agsh_message=${{ inputs.agsh_message }}
 

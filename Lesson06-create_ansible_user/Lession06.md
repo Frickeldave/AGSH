@@ -1,6 +1,6 @@
 # Lesson 06 - Anlegen des Ansible User
 
-Das besonderen an Ansible ist es, dass du per push auf das System zugreifst, anstelle der Installation eines Agents wie es sonst bei Configuration Management Systemen üblich ist. Im Falle von Linux via SSH, im Fall von Windows via [WinRM](https://docs.ansible.com/ansible/latest/os_guide/windows_setup.html) (alternativ SSH im experimental state). Um mit Ansible auf dein Zielsystem zuzugreifen, sind natürlcih entsprechende Berechtigungen notwendig. Dieses Kapitel zeigt dir, wie du einen User "Ansible" anlegst und die entsprechenden Rechte vergibst.
+Das besonderen an Ansible ist es, dass du per push auf das System zugreifst, anstelle der Installation eines Agents wie es sonst bei Configuration Management Systemen üblich ist. Im Falle von Linux via SSH, im Fall von Windows via [WinRM](https://docs.ansible.com/ansible/latest/os_guide/windows_setup.html) (alternativ SSH im experimental state). Um mit Ansible auf dein Zielsystem zuzugreifen, sind natürlich entsprechende Berechtigungen notwendig. Dieses Kapitel zeigt dir, wie du einen User "Ansible" anlegst und die entsprechenden Rechte vergibst.
 
 ## Anlegen des Users
 
@@ -14,6 +14,8 @@ Erstze im folgenden Script in der Zeile ```sudo bash -c 'echo "ssh-rsa <YOURPUBL
 
 **Hinweis:** Die ersten beiden Zeilen sind auch schon im Script für die Anlage des GitHub Users in [Lesson04](../Lesson04-install_github_runner/Lesson04.md) enthalten und der Vollständigkeit-halber hier noch einmal aufgezeigt. Das Script sollte trotzdem ohne Fehler durchlaufen. 
 
+**Hinweis:** Solltest du von der voerherigen Lesson noch als User GitHub angemeldet sein, verlassen diesen mit "Exit". 
+
 ```bash
 sudo /sbin/addgroup sudo-nopasswd
 sudo bash -c 'echo "%sudo-nopasswd ALL=(ALL:ALL) NOPASSWD:ALL" > /etc/sudoers.d/sudo-nopasswd'
@@ -26,10 +28,10 @@ sudo chmod 700 /home/ansible/.ssh
 sudo chmod 600 /home/ansible/.ssh/authorized_keys
 ```
 
-Setze als letztes noch ein Kennwort für den User:
+Setze als letztes noch ein Kennwort für den User. In diesem Fall nutzen wir "aadmin", ansonsten vergib ein möglichst kryptisches Kennwort. Alternativ kannst du dies auch leer lassen um den Zugang via Passwort komplett zu unterbinden:
 
 ```bash
-passwd ansible
+sudo passwd ansible
 ```
 
 Du kannst den Zugriff im Anschluss mit folgendem Befehl testen:
@@ -37,8 +39,6 @@ Du kannst den Zugriff im Anschluss mit folgendem Befehl testen:
 ```powershell
 ssh ansible@<IPADDRESS> -i C:\Users\USERNAME\.ssh\id_rsa_AGSH
 ```
-
-Bitte beachte, da wir (bewusst) kein Passwort für den User vergeben haben, ist die Anmeldung nur über SSH und einen private-key möglich.
 
 - [Zurück zur Startseite](./../README.md)
 - [Voriges Kapitel](./../Lesson05-create_cicd_workflow/Lesson05.md)

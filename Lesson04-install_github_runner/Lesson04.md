@@ -26,7 +26,7 @@ Ist der "github" benutzer angelegt, wird der GitHub Runner installiert. Wechsel 
 
 ```bash
 sudo su github
-cd~
+cd ~
 ```
 
 Die folgeden Script-Snippets sind nur Beispiele zum Stand der Erstellung dieses Artikels. Für ein aktuelles Script, wechsele bitte in das GitHub Repository, welches du in [Lesson 3](../Lesson03-create_gh_repository/Lesson03.md) angelegt hast. Navigiere dort zu *"Settings -> Actions -> Runners"*, klicke auf *"New self-hosted runner"* und wähle *"Linux"* als Betriebssystem.

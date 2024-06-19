@@ -10,7 +10,7 @@ Dies ist denkbar einfach: Füge einfach folgende Zeile als ersten Task in deine 
 - include_tasks: baseline.yaml
 ```
 
-Du findest wie immer auch eine fertige master.yaml im Verzeichnis dieser Lesson.
+Du findest wie immer auch eine fertige *master02.yaml* und dazu passende *host-master02.yaml* Datei im Verzeichnis dieser Lesson.
 
 ## Erklärung der Baseline
 

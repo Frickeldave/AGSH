@@ -74,7 +74,7 @@ Nach dem Neustart teste bitte einmal den Zugriff auf den Server via SSH. Die Üb
 
 ```ssh aadmin@<IP ADDRESS OF VIRTUAL MASCHINE>```
 
-Bestätige einmal den Fingerprint mit ```yes``` und authentifiziere dich mit deinem Benutzernamen und Kennwort.
+Bestätige einmal den Fingerprint mit ```yes``` und authentifiziere dich mit deinem Benutzernamen und Kennwort. Im Falle von Hyper-V ädert sich der Host Fingerprint nach jedem Neustart.
 
 ![Logon via SSH](./Screenshot%202024-06-07%20132558.png)
 
@@ -82,7 +82,9 @@ Bestätige einmal den Fingerprint mit ```yes``` und authentifiziere dich mit dei
 Alternativ kannst du die IP Adresse mit folgenden Befehl auslesen, wenn du die Integration Tools aktiviert hast (Aktivierung in Lesson 01 und Installation der Azure-Tools weiter oben).
 ```get-vm | select -ExpandProperty networkadapters | select vmname, macaddress, switchname, ipaddresses```
 
-Nun ist deine virtuelle Maschine fertig für den Einsatz. Solltest du die VM im Rahmen einer Session noch vorbereiten müssen, musst du ca. 10 Minuten Zeit für die Installation einrechnen (ohne den Download der ISO Datei).
+Nun ist deine virtuelle Maschine fertig für den Einsatz. Solltest du die VM im Rahmen einer Session noch vorbereiten müssen, musst du ca. 10-15 Minuten Zeit für die Installation einrechnen (ohne den Download der ISO Datei).
+
+
 
 - [Zurück zur Startseite](./../README.md)
 - [Voriges Kapitel](../Lesson01-create_a_vm/Lesson01.md)

@@ -1,4 +1,4 @@
-name: host-master
+name: host-master01
 on: 
   workflow_dispatch:
     inputs:
@@ -12,6 +12,6 @@ jobs:
   execute-ansible:
     uses: ./.github/workflows/exec-playbook.yaml
     with:
-      ans_target_playbook: master.yaml
+      ans_target_playbook: master01.yaml
       ans_limit: master
       ans_vars: agsh_message=${{ inputs.agsh_message }}

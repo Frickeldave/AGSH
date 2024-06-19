@@ -50,7 +50,7 @@ Playbooks enthalten alle Befehle, die gegen ein-, oder mehrere Systeme ausgefüh
 
 Roles sind den Playbooks sehr ähnnlich. Sie enthalten eine Auflistung von Befehlen, die gegen einen Client ausgeführt werden können. Nun ist es i.d.R. notwendig, für eine Applikation oder Konfiguration mehr als einen Befehl zu verwenden, die alle in einer Rolle zusammengefasst werden können. Zudem können in Rollen noch jede Menge weitere Informationen untergebracht werden, zum Beispiel Templates, Variables, Dateien, Meta-Informationen, und einiges mehr.
 
-Rollen werden aus einem Plabook mit folgendem Befehl aufgerufen: 
+Rollen werden aus einem Playbook mit folgendem Befehl aufgerufen: 
 
 ```yaml
 - name: Configure ssh
@@ -70,9 +70,12 @@ Wir haben in [Lesson05](./../Lesson05-create_cicd_workflow/Lesson05.md) den Work
 
 ## Testen deiner Ansible Installation
 
+
 Zum testen der Installation wiederholen wir den Aufruf aus [Lesson05](./../Lesson05-create_cicd_workflow/Lesson05.md).
 
 ```bash
+sudo su github
+cd ~
 source ~/ansible/bin/activate;cd ~/ansible/ansible;ansible -m ping localhost;deactivate
 ```
 
@@ -91,7 +94,7 @@ master | SUCCESS => {
 Jetzt wollen wir natürlich auch noch wissen, ob wir wirklich was am Client ausführen können. Also führen wir das allererste mal ein playbook aus.
 
 ```bash
-source ~/ansible/bin/activate;cd ~/ansible/ansible;ansible-playbook ./playbooks/master.yaml;deactivate
+source ~/ansible/bin/activate;cd ~/ansible/ansible;ansible-playbook ./playbooks/master01.yaml;deactivate
 ```
 
 Mit diesem Playbook passiert noch nicht all zu viel, aber wir bekommen im besten Fall eine Übersicht über die erfolgreiche Ausführung:
