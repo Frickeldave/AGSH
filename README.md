@@ -10,7 +10,7 @@ Genau aus dieser Idee ist der AGSH Workshop geboren. In diesem geht darum, mit *
 
 Dieses GitHub Repository begleitet dich durch den kompletten 90 Minuten Workshop, den ich erstmals zur Cloudland 2024 gehalten habe.
 
-- [Lesson 01 - Erstellen einer Hyper-V VM](Lesson01-create_a_vm/Lesson01.md)
+- [Lesson 01 - Erstellen einer Hyper-V VM](Lesson01-create_vm/Lesson01.md)
 - [Lesson 02 - Installation von Ubuntu 24.04](./Lesson02-install_ubuntu_in_vm/Lesson02.md)
 - [Lesson 03 - Erstellen des GitHub repositories](./Lesson03-create_gh_repository/Lesson03.md)
 - [Lesson 04 - Installation des GitHub runners](./Lesson04-install_github_runner/Lesson04.md)

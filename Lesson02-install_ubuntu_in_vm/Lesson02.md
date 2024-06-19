@@ -87,5 +87,5 @@ Nun ist deine virtuelle Maschine fertig für den Einsatz. Solltest du die VM im 
 
 
 - [Zurück zur Startseite](./../README.md)
-- [Voriges Kapitel](../Lesson01-create_a_vm/Lesson01.md)
+- [Voriges Kapitel](../Lesson01-create_vm/Lesson01.md)
 - [Nächstes Kapitel](../Lesson03-create_gh_repository/Lesson03.md)
