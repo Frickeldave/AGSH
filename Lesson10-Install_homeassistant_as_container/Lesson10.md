@@ -1,13 +1,13 @@
 # Lesson 10 - Installation einer Baseline
 
-Nach Lession 9 ist eigentlich nichts besonderes mehr zu implementieren. In deinem Repo führst du ÄNderungen durch, ein Push transportiert diese auf dein GitHub Repo, eine Action verteilt diese wiederum auf deinen Ansible Master-Server von wo aus du Playbooks gegen deine zu verwaltenden Clients in Form von weiteren Workflows starten kannst.
-Ist dieses Verfahrne einmal implementiert, kannst du mit wenigen Klicks jedes deiner Systeme in deinem Heimnetzwerk easy verwalten. Egal ob es sich um Raspberries, "richtige" Linux Hosts oder Windows Systeme handelt. Und wenn du es darauf anlegst, kannst du mit Ansible auch völlig proprietäre Systeme ansprechen. Schau dich einfach mal in der [Ansible Galaxy](https://galaxy.ansible.com/ui/) um.
+Nach Lession 9 ist eigentlich nichts besonderes mehr zu implementieren. In deinem Repo führst du Änderungen durch, ein Push transportiert diese auf dein GitHub Repo, eine Action verteilt diese wiederum auf deinen Ansible Master-Server von wo aus du Playbooks gegen deine zu verwaltenden Clients in Form von weiteren Workflows starten kannst.
+Ist dieses Verfahren einmal implementiert, kannst du mit wenigen Klicks jedes deiner Systeme in deinem Heimnetzwerk easy verwalten. Egal ob es sich um Raspberries, "richtige" Linux Hosts oder Windows Systeme handelt. Und wenn du es darauf anlegst, kannst du mit Ansible auch völlig proprietäre Systeme ansprechen. Schau dich einfach mal in der [Ansible Galaxy](https://galaxy.ansible.com/ui/) um.
 
-Da ich aber versprochen habe, wir wollen ein SmartHome System aufsetzen und die handlich von Docker Container immer etwas speziell ist, setzenw ir in diesme letzten Kapitel noch die Verwaltung eines HomeAssistent Docker Container auf.
+Da ich aber versprochen habe, wir wollen ein SmartHome System aufsetzen und das handling von Docker Container immer etwas speziell ist, setzen wir in diesme letzten Kapitel noch die Verwaltung eines HomeAssistent Docker Container auf.
 
 ## Erweitern des Master-Workflows
 
-Die folgenden Änderungen führe bitte an deiner host-master.yaml Datei durch. Dadurch erhälst du die Möglichkeit, den Port deiner HomeAssistant Installation über die GitHub GUI zu modifizieren. Zudem kansnt du über ein Bool Wert bestimmen, ob die Installation komplett resetted werden soll, oder die bestehenden Daten übernommen werden.
+Die folgenden Änderungen führe bitte an deiner host-master.yaml Datei durch oder kopiere die beiden Daten *host-master03.yaml* und *master03.yaml*. Dadurch erhälst du die Möglichkeit, den Port deiner HomeAssistant Installation über die GitHub GUI zu modifizieren. Zudem kannst du über ein Bool Wert bestimmen, ob die Installation komplett resetted werden soll, oder die bestehenden Daten übernommen werden.
 
 ```yaml
 

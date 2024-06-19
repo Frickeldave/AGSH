@@ -11,7 +11,7 @@
     update_cache: yes
     cache_valid_time: 3600
 
-- name: "Create homenet_ssh group"
+- name: "Create ssh group"
   group:
     name: "agsh_ssh"
 

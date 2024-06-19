@@ -68,6 +68,8 @@ Die genaue Beschreibung der Rollen ist Teil des interaktiven Workshops, aber ich
 
 Führst du nun dein host-master Workflow aus, sind alle 3 Komponenten installiert/ konfiguriert. Nach Neu-Anmeldung siehst du gleich, wie sich deine Shell verändert hat. Wahrscheinlich ist es nicht super-hübsch, da du auf deinem System die Schriftart ["Nerdfont Meslo"](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Meslo.zip) benötigst und deinem verwendeten Terminal Client beibringen musst, diese Schriftart zu verwenden.
 
+![New shell with oh-my-posh and ssh warning](./Screenshot%202024-06-13%20202915.png)
+
 - [Zurück zur Startseite](./../README.md)
 - [Voriges Kapitel](./../Lesson08-create-playbook-workflow/Lesson08.md)
 - [Nächstes Kapitel](./../Lesson09-Installation_of_a_baseline/Lession09.md)

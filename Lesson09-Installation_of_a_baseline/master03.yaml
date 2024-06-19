@@ -1,0 +1,33 @@
+---
+
+- name: Master
+  hosts: master
+  become: true
+  gather_facts: true
+  vars:
+    homeassistant_reset: "{{ homeassistant_reset_input | default(false) }}"
+    homeassistant_port: "{{ homeassistant_port_input | default(8123) }}"
+
+  tasks:
+
+  - include_tasks: baseline.yaml
+
+  - name:
+    ansible.builtin.debug:
+      msg: "Remove exisiting homeassistant data: {{ homeassistant_reset }}"
+
+  - name:
+    ansible.builtin.debug:
+      msg: "Homeassistant port: {{ homeassistant_port }}"
+    
+  - name: Execute the docker role
+    include_role:
+      name: app-docker
+
+  - name: Execute the docker-compose role
+    include_role:
+      name: app-docker-compose
+
+  - name: Execute the homeassistant role
+    include_role:
+      name: app-homeassistant
