@@ -68,4 +68,4 @@ Im letzten Schritt gehe auf deine GitHub-Runner Konfigurationsseite und prüfe, 
 
 - [Zurück zur Startseite](./../README.md)
 - [Voriges Kapitel](../Lesson03-create_gh_repository/Lesson03.md)
-- [Nächstes Kapitel](../Lesson05-_create_cicd_workflow/lesson05.md)
+- [Nächstes Kapitel](../Lesson05-create_cicd_workflow/lesson05.md)

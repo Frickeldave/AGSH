@@ -8,9 +8,9 @@ Das unten stehende Script führt folgende Tätigkeiten aus:
 
 - Anlegen eines Users "ansible"
 - Vergabe von Rechten, administrative Tasks auszuführen 
-- Hinterlegen eines public-keys der es erlaubt, dass Ansible sich mit dem private key anmeldet, den wir in [Lesson05](../Lesson05-_create_cicd_workflow/Lesson05.md) in unserem GitHub Secrets hinterlegt haben.
+- Hinterlegen eines public-keys der es erlaubt, dass Ansible sich mit dem private key anmeldet, den wir in [Lesson05](../Lesson05-create_cicd_workflow/Lesson05.md) in unserem GitHub Secrets hinterlegt haben.
 
-Erstze im folgenden Script in der Zeile ```sudo bash -c 'echo "ssh-rsa <YOURPUBLICKEY>" > /home/ansible/.ssh/authorized_keys'``` den string ```<YOURPUBLICKEY>``` mit dem public key in deiner Datei "*C:\Users\USERNAME\.ssh\id_rsa_AGSH.pub*", die du in [Lesson05](../Lesson05-_create_cicd_workflow/Lesson05.md) erzeugt hast.
+Erstze im folgenden Script in der Zeile ```sudo bash -c 'echo "ssh-rsa <YOURPUBLICKEY>" > /home/ansible/.ssh/authorized_keys'``` den string ```<YOURPUBLICKEY>``` mit dem public key in deiner Datei "*C:\Users\USERNAME\.ssh\id_rsa_AGSH.pub*", die du in [Lesson05](../Lesson05-create_cicd_workflow/Lesson05.md) erzeugt hast.
 
 **Hinweis:** Die ersten beiden Zeilen sind auch schon im Script für die Anlage des GitHub Users in [Lesson04](../Lesson04-install_github_runner/Lesson04.md) enthalten und der Vollständigkeit-halber hier noch einmal aufgezeigt. Das Script sollte trotzdem ohne Fehler durchlaufen. 
 
@@ -41,5 +41,5 @@ ssh ansible@<IPADDRESS> -i C:\Users\USERNAME\.ssh\id_rsa_AGSH
 ```
 
 - [Zurück zur Startseite](./../README.md)
-- [Voriges Kapitel](../Lesson05-_create_cicd_workflow/Lesson05.md)
+- [Voriges Kapitel](../Lesson05-create_cicd_workflow/Lesson05.md)
 - [Nächstes Kapitel](./../Lesson07-add_ansible_files/Lesson07.md)
