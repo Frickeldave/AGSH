@@ -14,7 +14,7 @@ Dieses GitHub Repository begleitet dich durch den kompletten 90 Minuten Workshop
 - [Lesson 02 - Installation von Ubuntu 24.04](./Lesson02-install_ubuntu_in_vm/Lesson02.md)
 - [Lesson 03 - Erstellen des GitHub repositories](./Lesson03-create_github_repository/Lesson03.md)
 - [Lesson 04 - Installation des GitHub runners](./Lesson04-install_github_runner/Lesson04.md)
-- [Lesson 05 - Erstellen des CICD workflows](./Lesson05-create_cicd_workflow/Lesson05.md)
+- [Lesson 05 - Erstellen des CICD workflows](Lesson05-_create_cicd_workflow/Lesson05.md)
 - [Lesson 06 - Erstellen des Ansible users](./Lesson06-create_ansible_user/Lession06.md)
 - [Lesson 07 - Hinzufügen der Ansible Dateien](./Lesson07-add_ansible_files/Lesson07.md)
 - [Lesson 08 - Erstellen des Playbook workflows](./Lesson08-create-playbook-workflow/Lesson08.md)

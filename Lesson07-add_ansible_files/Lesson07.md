@@ -66,12 +66,12 @@ Der Verzeichnisname der Rolle muss in diesem Fall "cfg-ssh" lauten. Ansible such
 
 ## Update deiner Ansible Server Installation
 
-Wir haben in [Lesson05](./../Lesson05-create_cicd_workflow/Lesson05.md) den Workflow eingerichtet, der das System bei jedem Git-Push aktualisiert. Dies nutzen wir nun, um die dem GitHub Repository neu hinzugefügten Dateien auf die VM zu deployen. Pushe also nun die Änderungen in deinem Repository und überprüfe auf dem System, ob alles vorhanden ist.
+Wir haben in [Lesson05](../Lesson05-_create_cicd_workflow/Lesson05.md) den Workflow eingerichtet, der das System bei jedem Git-Push aktualisiert. Dies nutzen wir nun, um die dem GitHub Repository neu hinzugefügten Dateien auf die VM zu deployen. Pushe also nun die Änderungen in deinem Repository und überprüfe auf dem System, ob alles vorhanden ist.
 
 ## Testen deiner Ansible Installation
 
 
-Zum testen der Installation wiederholen wir den Aufruf aus [Lesson05](./../Lesson05-create_cicd_workflow/Lesson05.md).
+Zum testen der Installation wiederholen wir den Aufruf aus [Lesson05](../Lesson05-_create_cicd_workflow/Lesson05.md).
 
 ```bash
 sudo su github
