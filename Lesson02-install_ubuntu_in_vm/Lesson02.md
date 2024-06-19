@@ -1,6 +1,6 @@
 # Lesson 02 - Virtuelle Maschine erstellen
 
-Nach der Erstellung der virtuellen Maschine muss auf dieser noch Betriebssystem installiert werden. Die Installation erfolgt im Grundsatz den Standardeinstellungen von Ubuntu 24.04.  Natürlich kannst du alle Lessons auch auf Basis einer anderen Linux Distribution ausführen. Ggf. weichen dann einige Schritte ab.
+Nach der Erstellung der virtuellen Maschine, muss auf dieser noch das Betriebssystem installiert werden. Die Installation erfolgt im Grundsatz den Standardeinstellungen von Ubuntu 24.04.  Natürlich kannst du alle Lessons auch auf Basis einer anderen Linux Distribution ausführen. Ggf. weichen dann einige Schritte ab.
 
 Hast du im vorigen Schritt alles korrekt gemacht, sollte direkt nach dem Start der Installationsdialog von Ubuntu starten. Wähle hier den Menüpunkt "Try or Install Ubuntu Server".
 
@@ -48,7 +48,7 @@ Im folgenden Dialog kannst du die aktivierung von "Ubunutu Pro" überspringen.
 
 ![Skip Ubunutu Pro](./Screenshot%202024-06-07%20122147.png)
 
-Der SSH Server ist dringed benötigt. Daher aktiviere hier bitte die Option "Install OpenSSH server". Ein SSH Key muss nicht import werden, im Rahmen dieses Trainings ist die simple Authentifizierung via Kennwort ausreichend.
+Der SSH Server ist dringed benötigt. Daher aktiviere hier bitte die Option "Install OpenSSH server". Ein SSH Key muss nicht import werden, den erstellen wir gliech im Anschluß selber.
 
 ![SSH Server](./Screenshot%202024-06-07%20122218.png)
 
@@ -65,7 +65,7 @@ Nach dem Neustart des System melde dich einmal auf dem System an, aktualisiere d
 ```bash
 sudo apt update
 sudo apt upgrade
-sudo apt install azure-tools
+sudo apt install linux-azure
 ```
 
 ## SSH Verbindung aufbauen
@@ -79,8 +79,10 @@ Bestätige einmal den Fingerprint mit ```yes``` und authentifiziere dich mit dei
 ![Logon via SSH](./Screenshot%202024-06-07%20132558.png)
 
 **Hinweis:** Die IP Adresse der Hyper-V Instanz wechselt nach jedem Neustart. Daher ist einmal nach einem Neustart die Anmeldung auf dem Ubuntu System notwendig umd ie IP Adresse mit ```ip addr show``` zu ermitteln.
-Alternativ kannst du die IP Adresse mit folgenden Befehl auslesen, wenn du die Integration Tools aktiviert hast (Aktivierung in Lesson 01 und Installation der Azure-Tools in Lesson 02).
+Alternativ kannst du die IP Adresse mit folgenden Befehl auslesen, wenn du die Integration Tools aktiviert hast (Aktivierung in Lesson 01 und Installation der Azure-Tools weiter oben).
 ```get-vm | select -ExpandProperty networkadapters | select vmname, macaddress, switchname, ipaddresses```
+
+Nun ist deine virtuelle Maschine fertig für den Einsatz. Solltest du die VM im Rahmen einer Session noch vorbereiten müssen, musst du ca. 10 Minuten Zeit für die Installation einrechnen (ohne den Download der ISO Datei).
 
 - [Zurück zur Startseite](./../README.md)
 - [Voriges Kapitel](../Lesson01-create_a_vm/Lesson01.md)

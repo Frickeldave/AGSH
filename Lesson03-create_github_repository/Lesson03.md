@@ -1,6 +1,6 @@
-# Lesson 03 - GitHub repository erstellen
+# Lesson 03 - GitHub Repository erstellen
 
-Alle Dateien die für die Verwaltung der Umgebung notwendig sind, werden in einem privaten Repository verwaltet. Privat deswegen, weil in dem Repository 2 wesentlichen Secrets verwaltet werden (mehr dazu in späteren Lessons). In diesem Kapitel wird erläutert, wie das repository angelegt und auf das Entiwcklungssystem gecloned wird.
+Alle Dateien die für die Verwaltung der Umgebung notwendig sind, werden in einem privaten Repository verwaltet. Privat deswegen, weil in dem Repository 2 wesentlichen Secrets verwaltet werden (mehr dazu in späteren Lessons). In diesem Kapitel wird erläutert, wie das Repository angelegt und auf das Entiicklungssystem gecloned wird.
 
 ## Anlegen des Repositories
 
@@ -10,7 +10,7 @@ Melde dich bei deinem GitHub Account an, wechsel in den Bereich "Repositories" u
 
 ## Clone des repositories erstellen
 
-Öffne nun eine Powershell Konsole und clone das Repository. Du hast nun die Möglichkeit, dich entweder über Web/SSO zu authentifizieren (empfohlen) oder ein "Poersonal access token" zu nutzen (wenn keine UI oder kein Browser) zur Verfügung steht.
+Öffne nun eine Powershell Konsole und clone das Repository. Du hast nun die Möglichkeit, dich entweder über Web/SSO zu authentifizieren (empfohlen) oder ein "Personal access token" zu nutzen (wenn keine UI oder kein Browser) zur Verfügung steht.
 
 ![Lokaler clone des repositories erzeugen](./Screenshot%202024-06-07%20125959.png)
 
@@ -32,7 +32,7 @@ In den Devopler settings hast du die Möglichkeit, ein PAT anzulegen. GitHub unt
 
 ![Generate classic PAT](./Screenshot%202024-06-07%20130234.png)
 
-Erzeuge das PAT mit einem beliebigen Namen und Laufzeit und speichere dir den erzeugten String in deinem persönlichen Password vault. WICHTIG: Der String ist nur einmalig einsehbar. Verlierst du diesen, musst du Ihn neu erzeugen.
+Erzeuge das PAT mit einem beliebigen Namen und Laufzeit und speichere dir den erzeugten String in deinem persönlichen Password vault. WICHTIG: Der String ist nur einmalig einsehbar. Verlierst du diesen, musst du ihn neu erzeugen.
 
 Im Anschluss kannst du deinen GitHub-Benutzernamen und das PAT eingeben um dich zu authentifizieren.
 

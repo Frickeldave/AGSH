@@ -4,8 +4,8 @@ Sind alle Vorbereitungen getroffen, wird ein CICD Workflow eingerichtet, der bei
 
 - **Auschecken des Repositories in ein dediziertes Verzeichnis.** Hier erzeugen wir das Verzeichnis mit Hilfe eines Zufallgenerators um Konflikte mit bestehenden Verzeichnissen zu vermeiden.
 - **Aktualisierung des Betriebssystem falls notwendig.** Man kann vortrefflich darüber streiten, welche Strategie hier die die beste ist. Immer das System auf Stand halten oder zu definierten Zeitpunkten kontrollierte Updates fahren. Da letzteres ein erhöhtes Maßa an Planung und Disziplin benötigt, bevorzuge ich zeitnahe Updates. Möchte man nicht jede Änderung sofort einspielen, empfiehlt sich im professionellen Umfeld die Etablierung eines eigenen Ubuntu Repositories.
-- **Installation von Ansible.** Ansible wird ein virtuelles python environment (venv) installiert. Dabei wird die Versionsnummer explizit angegeben. Im Falle eines Updates muss diese entsprechend angepasst werden. Die venv Funktionalität ist auch wunderbar geeignet um mehrere Ansible Versionen prallel zu betreiben.
-- **Kopieren aller Ansible Dateien.** Es werden alle Palybooks, Roles und Konfigurationsdateien für Ansible auf das lokale System kopiert.
+- **Installation von Ansible.** Ansible wird über ein virtuelles python environment (venv) installiert. Dabei wird die Versionsnummer explizit angegeben. Im Falle eines Updates muss diese entsprechend angepasst werden. Die venv Funktionalität ist auch wunderbar geeignet um mehrere Ansible Versionen prallel zu betreiben.
+- **Kopieren aller Ansible Dateien.** Es werden alle Playbooks, Roles und Konfigurationsdateien für Ansible auf das lokale System kopiert.
 - **Kopieren einer Secret Datei für den Ansible vault.** Erstellen einer Secret Datei aufgrund eines in GitHub hinterlegten Secure-Strings. Dies ist auch der Grund, warum das Repository auf "private" gestellt werden muss.
 - **Kopieren einer private-key Datei für den Zugriff auf Zielsysteme**. Ansible benötigt für den Zugriff auf Linux Systeme einen Private Key (Im Falle von Windows gibt es mehrere Möglichkeiten, die nicht Teil dieses Workshops sind). Dieser Private Key ist, genauso wie das vault-secret, im GitHub Repository gespeichert.
 
@@ -50,7 +50,7 @@ The key's randomart image is:
 PS >
 ```
 
-Öffne nun die erzeugte Datei "*C:\Users\dakoenig\.ssh\id_rsa_AGSH*" kopiere den Inhalt in die Zwischenablage, lege ein GitHub Secret mit dem Namen ```AGSH_ANSIBLE_PRVKEY``` und dem Wert ```aadmin``` an und kopiere den Inhalt der Zwischenablage in den "Value". Beachte dabei, dass nach dem private Key noch eine Leerzeile enthalten sein muss. 
+Öffne nun die erzeugte Datei "*C:\Users\dakoenig\.ssh\id_rsa_AGSH*" und kopiere den Inhalt in die Zwischenablage, lege ein GitHub Secret mit dem Namen ```AGSH_ANSIBLE_PRVKEY``` und dem Wert ```aadmin``` an und kopiere den Inhalt der Zwischenablage in den "Value". Beachte dabei, dass nach dem private Key noch eine Leerzeile enthalten sein muss. 
 
 ## Anlegen des Workflows
 

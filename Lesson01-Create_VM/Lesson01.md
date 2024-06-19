@@ -22,7 +22,7 @@ Folgende Voraussetzungen müssen getroffen werden, um diese Workshop durchzufüh
 - Username für das GitHub Konto auf "Master": GitHub
 - Username für das Ansible Konto: Ansible
 
-Selbstverständlich sollten produktive Syteme nicht auf diese Art konfiguriert werden. Auch "Ansible" und "GitHub" sollten nicht als Username verwendet werden um den Agriffsvektor auf die Systeme bei einer Brute-Force Attacke möglichst klein zu halten.
+Selbstverständlich sollten produktive Syteme nicht auf diese Art konfiguriert werden. Auch "Ansible" und "GitHub" sollten nicht als Username verwendet werden, um den Agriffsvektor auf die Systeme bei einer Brute-Force Attacke möglichst klein zu halten.
 
 ## Hyper-V aktivieren
 
@@ -34,7 +34,7 @@ Aktiviere nun die Hyper-V Rolle mit allen Sub-Features.
 
 ![Activate Hyper-V role](./Screenshot%202024-06-07%20120047.png)
 
-Nach einen Neustart des Systems steht dir die Hyper-V Rolle zur Verfügung. Entweder kannst du den hyper-V Manager nun das Startmenp starten, oder in eine bestehende MMC einbinden.
+Nach einen Neustart des Systems steht dir die Hyper-V Rolle zur Verfügung. Entweder kannst du den Hyper-V Manager nun über das Startmenp starten, oder in eine bestehende MMC einbinden.
 
 ## Erstellen der virtuellen Maschine
 
@@ -58,7 +58,7 @@ Nun wird die virtuelle MAschine mit einem Netzwerk verbunden. Du kannst hierfür
 
 ![Connect virtual maschine to network](Screenshot%202024-06-07%20121239.png)
 
-Jetzt wird die virtuelle Festplatte definiert. Setze die Größe heirbei auf 1024 GB. Es macht nichts, wenn die angegebene Größe die Größe deiner physikalischen Festplatte übersteigt, es wird nur der Platz verwedendet, den du innerhalb deiner virtuellen Maschine wirklich verwendest. ACHTUNG: Virtuelle Festplatten werden zwar automatisch durch den Hypervsior vergrößert, aber nie verkleinert, dies musst du selbst erledigen.
+Jetzt wird die virtuelle Festplatte definiert. Setze die Größe heirbei auf 1024 GB. Es macht nichts, wenn die angegebene Größe die Größe deiner physikalischen Festplatte übersteigt, es wird nur der Platz verwendet, den du innerhalb deiner virtuellen Maschine wirklich verwendest. ACHTUNG: Virtuelle Festplatten werden zwar automatisch durch den Hypervsior vergrößert, aber nie verkleinert, dies musst du selbst erledigen.
 
 ![Configure virtual harddisk](Screenshot%202024-06-07%20121303.png)
 
@@ -70,9 +70,7 @@ Nach dem Durchlaufen des Wizards zur Erstellung einer VM, müssen noch einige Di
 
 ![Configure Secure Boot](Screenshot%202024-06-07%20121435.png)
 
-Als letztes werden die Integration Services aktiviert. Dieses sind zwar nciht zwinged notwendig, machen aber die Arbeit mit der virtuellen Maschine um einiges konfortabler (Shared clipboard, auslesen der VM IP Adresse, und einiges mehr).
-
-Nun ist deine virtuelle Maschine fertig für den Einsatz.
+Als letztes werden die Integration Services aktiviert. Dieses sind zwar nicht zwinged notwendig, machen aber die Arbeit mit der virtuellen Maschine um einiges konfortabler (Shared clipboard, auslesen der VM IP Adresse, und einiges mehr).
 
 - [Zurück zur Startseite](./../README.md)
 - [Nächstes Kapitel](../Lesson02-install_ubuntu_in_vm/Lesson02.md)
