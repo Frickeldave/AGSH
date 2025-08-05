@@ -1,5 +1,7 @@
 # AGSH Project
 
+"A"nsible, "G"itHub, "S"mart"H"ome. An example for managing your personal smarthome. Can be used as 2hrs training at conferences.
+
 In meinem SmartHome stehe ich immer wieder vor der Herausforderung, alle beteiligten Systeme auf Stand zu halten, ohne einen riesigen administrativen Overhead zu erzeugen.
 
 Die Verwaltung eines SmartHome ist ein gut greifbares Szenario. Der geneigte Administrator steht dabei vor ähnlichen Herausforderungen wie bei der Verwaltung seiner CICD Umgebung. Dazu gehören u.a. Akzeptanz durch Stakeholder, wenig zeitliche Ressourcen, kein Budget für aufwändige Softwaremanagement Suiten.
@@ -10,13 +12,13 @@ Genau aus dieser Idee ist der AGSH Workshop geboren. In diesem geht darum, mit *
 
 Dieses GitHub Repository begleitet dich durch den kompletten 90 Minuten Workshop, den ich erstmals zur Cloudland 2024 gehalten habe.
 
-- [Lesson 01 - Erstellen einer Hyper-V VM](Lesson01-create_vm/Lesson01.md)
-- [Lesson 02 - Installation von Ubuntu 24.04](./Lesson02-install_ubuntu_in_vm/Lesson02.md)
-- [Lesson 03 - Erstellen des GitHub repositories](./Lesson03-create_github_repository/Lesson03.md)
-- [Lesson 04 - Installation des GitHub runners](./Lesson04-install_github_runner/Lesson04.md)
-- [Lesson 05 - Erstellen des CICD workflows](Lesson05-create_cicd_workflow/Lesson05.md)
-- [Lesson 06 - Erstellen des Ansible users](./Lesson06-create_ansible_user/Lession06.md)
-- [Lesson 07 - Hinzufügen der Ansible Dateien](./Lesson07-add_ansible_files/Lesson07.md)
-- [Lesson 08 - Erstellen des Playbook workflows](./Lesson08-create-playbook-workflow/Lesson08.md)
-- [Lesson 09 - Erstellen eines Systemworkflows](./Lesson09-Installation_of_a_baseline/Lession09.md)
-- [Lesson 10 - Installation von HomeAssistent](./Lesson10-Install_homeassistant_as_container/Lesson10.md)
+- [Lesson 01 - Erstellen einer Hyper-V VM](training/Lesson01-create_vm/Lesson01.md)
+- [Lesson 02 - Installation von Ubuntu 24.04](./training/Lesson02-install_ubuntu_in_vm/Lesson02.md)
+- [Lesson 03 - Erstellen des GitHub repositories](./training/Lesson03-create_github_repository/Lesson03.md)
+- [Lesson 04 - Installation des GitHub runners](./training/Lesson04-install_github_runner/Lesson04.md)
+- [Lesson 05 - Erstellen des CICD workflows](./training/Lesson05-create_cicd_workflow/Lesson05.md)
+- [Lesson 06 - Erstellen des Ansible users](./training/Lesson06-create_ansible_user/Lession06.md)
+- [Lesson 07 - Hinzufügen der Ansible Dateien](./training/Lesson07-add_ansible_files/Lesson07.md)
+- [Lesson 08 - Erstellen des Playbook workflows](./training/Lesson08-create-playbook-workflow/Lesson08.md)
+- [Lesson 09 - Erstellen eines Systemworkflows](./training/Lesson09-Installation_of_a_baseline/Lession09.md)
+- [Lesson 10 - Installation von HomeAssistent](./training/Lesson10-Install_homeassistant_as_container/Lesson10.md)

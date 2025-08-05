@@ -1,0 +1,59 @@
+---
+- name:
+  ansible.builtin.debug:
+    msg: "TCP forwarding: {{ ssh_allow_tcp_forward }}"
+
+- name: Install ssh server
+  apt:
+    name:
+      - openssh-server
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: "Create homenet_ssh group"
+  group:
+    name: "agsh_ssh"
+
+- name: "Add ansible-user to sudo group"
+  user:
+    name: "ansible"
+    groups: "agsh_ssh"
+    append: true # --> user is not removed from any other group
+
+- name: Check if user 'dave' exist
+  command: id dave
+  ignore_errors: yes
+  register: user_check
+
+- name: Add user 'aadmin' to group 'agsh_ssh'
+  user:
+    name: aadmin
+    groups: agsh_ssh
+  when: user_check.rc == 0
+
+- name: Configure motd
+  template:
+    src: motd.j2
+    dest: /etc/motd
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Configure issue.net
+  template:
+    src: issue.net.j2
+    dest: /etc/issue.net
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Configure SSH server
+  template:
+    src: sshd_config.j2
+    dest: /etc/ssh/sshd_config
+    owner: root
+    group: root
+    mode: '0600'
+  notify:
+    - Restart SSH service

@@ -1,0 +1,22 @@
+name: host-master03
+on: 
+  workflow_dispatch:
+    inputs:
+      homeassistant_port:
+        description: The port for the homeassistant application
+        required: false
+        default: 8123
+        type: number
+      homeassistant_reset:
+        description: Reset the homeassistant installation
+        required: false
+        default: false
+        type: boolean
+jobs:
+
+  execute-ansible:
+    uses: ./.github/workflows/exec-playbook.yaml
+    with:
+      ans_target_playbook: master03.yaml
+      ans_limit: master
+      ans_vars: homeassistant_reset=${{ inputs.homeassistant_reset }} homeassistant_port=${{ inputs.homeassistant_port }}

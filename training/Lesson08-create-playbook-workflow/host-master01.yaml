@@ -1,0 +1,17 @@
+name: host-master01
+on: 
+  workflow_dispatch:
+    inputs:
+      agsh_message:
+        description: A message that should be shown in ansible output
+        required: false
+        default: "'A stupid message'"
+
+jobs:
+
+  execute-ansible:
+    uses: ./.github/workflows/exec-playbook.yaml
+    with:
+      ans_target_playbook: master01.yaml
+      ans_limit: master
+      ans_vars: agsh_message=${{ inputs.agsh_message }}

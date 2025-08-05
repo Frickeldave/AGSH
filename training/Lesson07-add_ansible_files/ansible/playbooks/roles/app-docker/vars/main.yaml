@@ -1,0 +1,7 @@
+---
+docker_username: appuser
+docker_user_home: /home/appuser
+docker_default_registry: "https://docker.io"
+docker_ssh_public_key: empty
+docker_uid: "50000"
+#docker_py_version: 1.10.6

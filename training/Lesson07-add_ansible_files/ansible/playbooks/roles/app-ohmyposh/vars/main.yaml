@@ -1,0 +1,11 @@
+---
+ohmyposh_version: 19.18.1
+nerdfont_version: 3.1.1
+ohmyposh_linux_bin_url_arm: https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v{{ohmyposh_version}}/posh-linux-arm
+ohmyposh_linux_bin_url_arm64: https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v{{ohmyposh_version}}/posh-linux-arm64
+ohmyposh_linux_bin_url_amd64: https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v{{ohmyposh_version}}/posh-linux-amd64
+ohmyposh_linux_bin_location: /usr/local/bin/oh-my-posh
+ohmyposh_themes_url: https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v{{ohmyposh_version}}/themes.zip
+ohmyposh_theme: aliens
+nerdfont: meslo
+nerdfont_url: https://github.com/ryanoasis/nerd-fonts/releases/download/v{{nerdfont_version}}/{{nerdfont}}.zip

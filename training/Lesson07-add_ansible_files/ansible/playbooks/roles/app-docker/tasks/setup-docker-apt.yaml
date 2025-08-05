@@ -1,0 +1,43 @@
+---
+- name: Install dependencies
+  apt:
+    name:
+      - git
+      - apt-transport-https
+      - ca-certificates
+      - wget
+      - software-properties-common
+      - gnupg2
+      - curl
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Add apt signing key from official docker repo
+  apt_key:
+    url: https://download.docker.com/linux/{{ ansible_distribution|lower }}/gpg
+    state: present
+
+- name: Add docker official repository
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/{{ ansible_distribution|lower }} {{ ansible_distribution_release }} stable
+    state: present
+
+- name: Index new repo into the cache
+  become: yes
+  apt:
+    name: "*"
+    state: latest
+    update_cache: yes
+    force_apt_get: yes
+
+- name: Install docker
+  apt:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - docker-compose-plugin
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600

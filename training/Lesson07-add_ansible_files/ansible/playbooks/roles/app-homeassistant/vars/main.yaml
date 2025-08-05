@@ -1,0 +1,4 @@
+---
+
+homeassistant_exec_user: appuser
+homeassistant_version: 2024.3

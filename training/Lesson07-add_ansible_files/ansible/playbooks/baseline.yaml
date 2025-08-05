@@ -1,0 +1,32 @@
+---
+
+- name: Update and upgrade apt packages
+  become: true
+  apt:
+    upgrade: yes
+    update_cache: yes
+    cache_valid_time: 86400 #One day
+
+- name: Install mandatory components
+  apt:
+    name:
+      - whois
+      - unzip
+      - vim
+      - fontconfig
+      - git
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Install and configure oh-my-posh
+  include_role:
+    name: app-ohmyposh
+
+- name: Configure vi systemwide
+  include_role:
+    name: cfg-vi
+
+- name: Configure ssh
+  include_role:
+    name: cfg-ssh

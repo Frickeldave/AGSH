@@ -1,0 +1,16 @@
+---
+
+- name: Master
+  hosts: master
+  become: true
+  gather_facts: true
+  vars:
+    agsh_message: "{{ message_input | default('Some stupid text') }}"
+
+  tasks:
+
+  - include_tasks: baseline.yaml
+
+  - name: "Output some basic stuff"
+    debug:
+      msg: This is a very first debug message which does show "{{ agsh_message }}"
